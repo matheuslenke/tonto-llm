@@ -1,0 +1,11 @@
+import main
+
+package Spiders
+
+// 'Spider' is a subkind of 'Animal'.
+subkind Spider specializes main.Animal {
+    hasVenom: boolean
+}
+
+// 'Spiderling' is a phase of 'Spider'.
+phase Spiderling specializes Spider {}

@@ -1,0 +1,11 @@
+import main
+
+package Capybaras
+
+// 'Capybara' is a subkind of 'Animal'.
+subkind Capybara specializes main.Animal {
+    isSocial: boolean
+}
+
+// 'Pup' is a phase of 'Capybara'.
+phase Pup specializes Capybara {}

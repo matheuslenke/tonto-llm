@@ -1,0 +1,12 @@
+import Datatypes
+import main
+
+package Fish
+
+// 'Fish' is a subkind of 'Animal'.
+subkind Fish specializes main.Animal {
+    waterType: Datatypes.WaterType
+}
+
+// 'Fry' is a phase of 'Fish'.
+phase Fry specializes Fish {}

@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### RPG Ontology Project Structure
+
+This project defines an ontology for Role-Playing Games.
+
+**Key Files and Directories:**
+
+*   **`[tonto.json](mdc:tonto.json)`**: The main project configuration file. It includes metadata such as project name, version, authors, and specifies the output directory.
+*   **`[src/](mdc:src)`**: Contains the core ontology source files.
+    *   **`[src/all.tonto](mdc:src/all.tonto)`**: This appears to be a central file aggregating or defining major parts of the ontology.
+    *   **`[src/world/](mdc:src/world)`**: Likely contains ontology definitions related to the game world, environments, and locations.
+    *   **`[src/individual/](mdc:src/individual)`**: Probably holds definitions for characters, NPCs, creatures, or other individual entities.
+    *   **`[src/items/](mdc:src/items)`**: Expected to contain definitions for items, equipment, and consumables within the game.
+*   **`[out/](mdc:out)`**: The output directory for compiled or generated ontology files, as specified in `[tonto.json](mdc:tonto.json)`.
+
+Understanding these components should help in navigating and modifying the RPG ontology.

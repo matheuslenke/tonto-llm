@@ -1,0 +1,21 @@
+package Datatypes
+
+// An 'enum' is a datatype that consists of a set of named values.
+// 'Breed' is an enum that lists different cat breeds.
+enum Breed {
+    Siamese,
+    Persian
+}
+
+// A 'datatype' is a user-defined type that can be used for attributes.
+// 'MedicalRecord' is a datatype that contains information about an animal's health.
+datatype MedicalRecord {
+    vaccinationDate: date
+    healthCondition: string
+}
+
+// 'WaterType' is an enum that lists different types of water for aquatic animals.
+enum WaterType {
+    Freshwater,
+    Saltwater
+}

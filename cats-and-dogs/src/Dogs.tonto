@@ -1,0 +1,216 @@
+import main
+
+package Dogs
+
+
+// A 'subkind' is a rigid specialization of a 'kind'.
+// 'Dog' is a subkind of 'Animal' because a dog is always an animal.
+subkind Dog specializes main.Animal {
+    label {
+        @en "Dog"
+        @pt-br "Cachorro"
+        @fr "Chien"
+    }
+    description {
+        @en "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, non-retractile claws, and a barking, howling, or whining voice."
+        @pt-br "Um mamífero carnívoro domesticado que normalmente possui focinho longo, olfato apurado, garras não retráteis e uma voz que ladra, uiva ou geme."
+        @fr "Un mammifère carnivore domestique qui a généralement un long museau, un odorat développé, des griffes non rétractiles et une voix qui aboie, hurle ou gémit."
+    }
+}
+
+/**
+ * Represents a classification of dogs based on shared characteristics.
+ *
+ * **OntoUML:** This is a `type` that acts as a `categorizer` for `Dog`.
+ * Its instances are specific dog breeds, which are themselves subtypes of `Dog`.
+ * This pattern is used to define a specific taxonomy of breeds for the `Dog` kind.
+ */
+type DogBreed {
+    label {
+        @en "Dog Breed"
+        @pt-br "Raça de Cachorro"
+        @fr "Race de Chien"
+    }
+    description {
+        @en "A specific group of dogs that have been bred by humans to have a uniform appearance, behavior, and other characteristics."
+        @pt-br "Um grupo específico de cães que foram criados por humanos para ter uma aparência, comportamento e outras características uniformes."
+        @fr "Un groupe spécifique de chiens qui ont été élevés par l'homme pour avoir une apparence, un comportement et d'autres caractéristiques uniformes."
+    }
+}
+
+// Specific dog breeds are modeled as `subkind`s of `Dog`.
+subkind GoldenRetriever specializes Dog {
+    label {
+        @en "Golden Retriever"
+        @pt-br "Golden Retriever"
+        @fr "Golden Retriever"
+    }
+    description {
+        @en "A sturdy, muscular dog of medium size, famous for the dense, lustrous coat of gold that gives the breed its name."
+        @pt-br "Um cão robusto e musculoso de tamanho médio, famoso pela pelagem densa e brilhante de cor dourada que dá nome à raça."
+        @fr "Un chien robuste et musclé de taille moyenne, célèbre pour son pelage doré, dense et brillant qui donne son nom à la race."
+    }
+}
+subkind GermanShepherd specializes Dog {
+    label {
+        @en "German Shepherd"
+        @pt-br "Pastor Alemão"
+        @fr "Berger Allemand"
+    }
+    description {
+        @en "A large, agile, muscular dog of noble character and high intelligence. Loyal, confident, courageous, and steady."
+        @pt-br "Um cão grande, ágil e musculoso, de caráter nobre e alta inteligência. Leal, confiante, corajoso e estável."
+        @fr "Un chien de grande taille, agile et musclé, au caractère noble et à la grande intelligence. Loyal, confiant, courageux et constant."
+    }
+}
+subkind LabradorRetriever specializes Dog {
+    label {
+        @en "Labrador Retriever"
+        @pt-br "Labrador Retriever"
+        @fr "Labrador Retriever"
+    }
+    description {
+        @en "A friendly, outgoing, and high-spirited companion who has more than enough affection to go around for a family looking for a medium-to-large dog."
+        @pt-br "Um companheiro amigável, extrovertido e de alto astral que tem afeto de sobra para uma família que procura um cão de médio a grande porte."
+        @fr "Un compagnon amical, extraverti et plein d'entrain qui a plus qu'assez d'affection à revendre pour une famille à la recherche d'un chien de taille moyenne à grande."
+    }
+}
+subkind FrenchBulldog specializes Dog {}
+subkind Bulldog specializes Dog {
+    label {
+        @en "Bulldog"
+        @pt-br "Buldogue"
+        @fr "Bouledogue"
+    }
+    description {
+        @en "A medium-sized, muscular dog with a distinctive wrinkled face and a pushed-in nose. Known for its gentle but courageous nature."
+        @pt-br "Um cão de porte médio, musculoso, com uma face enrugada característica e um nariz achatado. Conhecido por sua natureza gentil, mas corajosa."
+        @fr "Un chien de taille moyenne et musclé, avec un visage ridé distinctif et un nez retroussé. Connu pour sa nature douce mais courageuse."
+    }
+}
+subkind Poodle specializes Dog {
+    label {
+        @en "Poodle"
+        @pt-br "Poodle"
+        @fr "Caniche"
+    }
+    description {
+        @en "An exceptionally smart and athletic dog breed, known for its distinctive curly coat and elegant appearance."
+        @pt-br "Uma raça de cão excepcionalmente inteligente e atlética, conhecida por sua pelagem cacheada distinta e aparência elegante."
+        @fr "Une race de chien exceptionnellement intelligente et athlétique, connue pour son pelage bouclé distinctif et son apparence élégante."
+    }
+}
+subkind Beagle specializes Dog {}
+subkind Rottweiler specializes Dog {
+    label {
+        @en "Rottweiler"
+        @pt-br "Rottweiler"
+        @fr "Rottweiler"
+    }
+    description {
+        @en "A robust and powerful dog of medium-to-large size, known for its loyalty, confidence, and guarding instincts."
+        @pt-br "Um cão robusto e poderoso de porte médio a grande, conhecido por sua lealdade, confiança e instintos de guarda."
+        @fr "Un chien robuste et puissant de taille moyenne à grande, connu pour sa loyauté, sa confiance et ses instincts de garde."
+    }
+}
+subkind GermanShorthairedPointer specializes Dog {}
+subkind Dachshund specializes Dog {
+    label {
+        @en "Dachshund"
+        @pt-br "Dachshund"
+        @fr "Teckel"
+    }
+    description {
+        @en "Known for its long body and short legs, this breed is brave, curious, and full of personality."
+        @pt-br "Conhecido por seu corpo longo e pernas curtas, esta raça é corajosa, curiosa e cheia de personalidade."
+        @fr "Connu pour son corps long et ses pattes courtes, cette race est courageuse, curieuse et pleine de personnalité."
+    }
+}
+subkind PembrokeWelshCorgi specializes Dog {}
+subkind AustralianShepherd specializes Dog {}
+subkind YorkshireTerrier specializes Dog {}
+subkind Boxer specializes Dog {
+    label {
+        @en "Boxer"
+        @pt-br "Boxer"
+        @fr "Boxer"
+    }
+    description {
+        @en "A fun-loving, bright, and active dog. Boxers are known for their playful and energetic nature, as well as their loyalty to their families."
+        @pt-br "Um cão divertido, inteligente e ativo. Os boxers são conhecidos por sua natureza brincalhona and enérgica, bem como por sua lealdade a suas famílias."
+        @fr "Un chien amusant, intelligent et actif. Les boxers sont connus pour leur nature joueuse et énergique, ainsi que pour leur loyauté envers leur famille."
+    }
+}
+subkind SiberianHusky specializes Dog {
+    label {
+        @en "Siberian Husky"
+        @pt-br "Husky Siberiano"
+        @fr "Husky Sibérien"
+    }
+    description {
+        @en "A medium-sized working dog, quick and light on his feet and free and graceful in action. Noted for its wolf-like appearance and striking blue or multi-colored eyes."
+        @pt-br "Um cão de trabalho de porte médio, rápido e leve, com ação livre e graciosa. Notável por sua aparência de lobo e seus impressionantes olhos azuis ou multicoloridos."
+        @fr "Un chien de travail de taille moyenne, rapide et léger, à l'action libre et gracieuse. Remarqué pour son apparence de loup et ses yeux bleus ou multicolores saisissants."
+    }
+}
+subkind CavalierKingCharlesSpaniel specializes Dog {}
+subkind GreatDane specializes Dog {}
+subkind DobermanPinscher specializes Dog {}
+subkind MiniatureSchnauzer specializes Dog {}
+subkind ShihTzu specializes Dog {}
+subkind BostonTerrier specializes Dog {}
+subkind BerneseMountainDog specializes Dog {}
+subkind Pomeranian specializes Dog {}
+subkind Havanese specializes Dog {}
+subkind ShetlandSheepdog specializes Dog {}
+subkind Brittany specializes Dog {}
+subkind EnglishSpringerSpaniel specializes Dog {}
+subkind CockerSpaniel specializes Dog {}
+subkind Mastiff specializes Dog {}
+subkind Chihuahua specializes Dog {
+    label {
+        @en "Chihuahua"
+        @pt-br "Chihuahua"
+        @fr "Chihuahua"
+    }
+    description {
+        @en "A tiny dog with a huge personality. A national symbol of Mexico, these alert and amusing 'purse dogs' stand among the oldest breeds of the Americas."
+        @pt-br "Um cão minúsculo com uma personalidade enorme. Símbolo nacional do México, esses 'cães de bolsa' alertas e divertidos estão entre as raças mais antigas das Américas."
+        @fr "Un chien minuscule avec une énorme personnalité. Symbole national du Mexique, ces 'chiens de sac à main' alertes et amusants comptent parmi les plus anciennes races des Amériques."
+    }
+}
+subkind Vizsla specializes Dog {}
+subkind Pug specializes Dog {}
+subkind BassetHound specializes Dog {}
+subkind Collie specializes Dog {}
+subkind Newfoundland specializes Dog {}
+subkind WestHighlandWhiteTerrier specializes Dog {}
+subkind Akita specializes Dog {}
+subkind ShibaInu specializes Dog {}
+subkind BichonFrise specializes Dog {}
+subkind Maltese specializes Dog {}
+
+
+// This generalization set formally defines the relationship between Dog, DogBreed, and the specific breeds.
+// It partitions the Dog kind according to the DogBreed classification.
+disjoint complete genset DogBreeds {
+    general Dog
+    categorizer DogBreed
+    specifics GoldenRetriever, GermanShepherd, LabradorRetriever, FrenchBulldog, Bulldog, Poodle, Beagle, Rottweiler, GermanShorthairedPointer, Dachshund, PembrokeWelshCorgi, AustralianShepherd, YorkshireTerrier, Boxer, SiberianHusky, CavalierKingCharlesSpaniel, GreatDane, DobermanPinscher, MiniatureSchnauzer, ShihTzu, BostonTerrier, BerneseMountainDog, Pomeranian, Havanese, ShetlandSheepdog, Brittany, EnglishSpringerSpaniel, CockerSpaniel, Mastiff, Chihuahua, Vizsla, Pug, BassetHound, Collie, Newfoundland, WestHighlandWhiteTerrier, Akita, ShibaInu, BichonFrise, Maltese
+}
+
+
+// A 'phase' is a contingent and intrinsic specialization of a 'kind'.
+// 'Puppy' is a phase of 'Dog' because a dog is a puppy for a period of time.
+phase Puppy specializes Dog {
+    label {
+        @en "Puppy"
+        @pt-br "Filhote"
+        @fr "Chiot"
+    }
+    description {
+        @en "A young dog, typically one that is less than one year old. This represents a temporary phase in a dog's life."
+        @pt-br "Um cão jovem, geralmente com menos de um ano de idade. Representa uma fase temporária na vida de um cão."
+        @fr "Un jeune chien, généralement âgé de moins d'un an. Cela représente une phase temporaire dans la vie d'un chien."
+    }
+}
