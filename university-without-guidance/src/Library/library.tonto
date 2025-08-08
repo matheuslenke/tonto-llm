@@ -1,0 +1,299 @@
+import WorkCollection
+import Person
+
+package Library
+
+/**
+ * Label (en): Reserved copy
+ * Label (fr): Copie réservée
+ * Description (en): Relator mediating a reservation between an item and its copy.
+ * Description (fr): Relateur médiant une réservation entre un item et sa copie.
+ */
+relator Reserved_Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Item
+    @mediation
+    [1] -- [1] ( {const } ) Copy
+}
+/**
+ * Label (en): Renewed copy
+ * Label (fr): Copie renouvelée
+ */
+relator Renewed_Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Item
+    @mediation
+    [1] -- [1] ( {const } ) Copy
+}
+/**
+ * Label (en): Get copy
+ * Label (fr): Obtenir une copie
+ */
+relator Get_Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Item
+    @mediation
+    [1] -- [1] ( {const } ) Items_Copy
+}
+/**
+ * Label (en): Library item
+ * Label (fr): Item de bibliothèque
+ */
+kind Item {
+    @formal
+    [1] -- [1]  Work
+}
+/**
+ * Label (en): Item's copy
+ * Label (fr): Copie d'item
+ */
+role Items_Copy specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Copy
+}
+/**
+ * Label (en): Copy
+ * Label (fr): Copie
+ */
+kind Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Copy_Reservation
+    @mediation
+    [1] -- [1] ( {const } ) Renew_Copy
+    @mediation
+    [1] -- [1] ( {const } ) Reserve_Copy_for_Employee
+    @mediation
+    [1] -- [1] ( {const } ) Employee_Loan_Role
+    @mediation
+    [1] -- [1] ( {const } ) Renew_Copy_for_Employee
+}
+/**
+ * Label (en): Copy reservation
+ * Label (fr): Réservation de copie
+ */
+role Copy_Reservation specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Make_Reservation_for_Student
+}
+/**
+ * Label (en): Student loan
+ * Label (fr): Prêt étudiant
+ */
+relator Student_Loan {
+    @mediation
+    [1] -- [1] ( {const } ) Copy
+    @mediation
+    [1] -- [1] ( {const } ) Delay
+    @mediation
+    [1] -- [1] ( {const } ) Student
+}
+/**
+ * Label (en): Loan delay
+ * Label (fr): Retard de prêt
+ */
+role Delay specializes Student {
+    @mediation
+    [1] -- [1] ( {const } ) Generate_Student_Delay
+}
+/**
+ * Label (en): Make reservation for student
+ * Label (fr): Faire une réservation pour un étudiant
+ */
+relator Make_Reservation_for_Student {
+    @mediation
+    [1] -- [1] ( {const } ) Student
+}
+/**
+ * Label (en): Renew copy for student
+ * Label (fr): Renouveler la copie pour un étudiant
+ */
+relator Renew_Copy_for_Student {
+    @mediation
+    [1] -- [1] ( {const } ) Copy
+    @mediation
+    [1] -- [1] ( {const } ) Student
+}
+/**
+ * Label (en): Renew copy
+ * Label (fr): Renouveler la copie
+ */
+role Renew_Copy specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Student
+}
+/**
+ * Label (en): Student
+ * Label (fr): Étudiant
+ * Description (en): Role played by a person enrolled at the university.
+ * Description (fr): Rôle joué par une personne inscrite à l'université.
+ */
+role Student  specializes Person.UniversityStudent
+/**
+ * Label (en): Generate student delay
+ * Label (fr): Générer le retard étudiant
+ */
+relator Generate_Student_Delay {
+    @mediation
+    [1] -- [1] ( {const } ) Return_Deadline
+    @mediation
+    [1] -- [1] ( {const } ) Student
+}
+/**
+ * Label (en): Return deadline
+ * Label (fr): Date limite de retour
+ */
+kind Return_Deadline {
+    [*] -- [*]  Fine
+}
+/**
+ * Label (en): Fine
+ * Label (fr): Amende
+ */
+kind Fine 
+/**
+ * Label (en): Daily fine
+ * Label (fr): Amende quotidienne
+ */
+phase Daily  specializes Fine
+/**
+ * Label (en): Monthly fine
+ * Label (fr): Amende mensuelle
+ */
+phase Monthly  specializes Fine
+/**
+ * Label (en): Undergraduate student
+ * Label (fr): Étudiant de premier cycle
+ */
+role Undergraduate_Student  specializes Student{
+    @mediation
+    ( {const } )[1] -- [1] ( {const } ) Undergraduate_Contract
+}
+/**
+ * Label (en): Graduate student
+ * Label (fr): Étudiant de deuxième cycle
+ */
+role Graduate_Student  specializes Student{
+    @mediation
+    ( {const } )[1] -- [1] ( {const } ) Graduate_Contract
+}
+/**
+ * Label (en): Undergraduate contract
+ * Label (fr): Contrat de premier cycle
+ */
+relator Undergraduate_Contract {
+    @mediation
+    [1] -- [1] ( {const } ) UNISAM
+}
+/**
+ * Label (en): Graduate contract
+ * Label (fr): Contrat de deuxième cycle
+ */
+relator Graduate_Contract {
+    @mediation
+    [1] -- [1] ( {const } ) UNISAM
+}
+/**
+ * Label (en): UNISAM
+ * Label (fr): UNISAM
+ * Description (en): A specific university organization.
+ * Description (fr): Une organisation universitaire spécifique.
+ */
+kind UNISAM 
+
+/**
+ * Label (en): Employee
+ * Label (fr): Employé
+ */
+role Employee  specializes Person.Person
+/**
+ * Label (en): Administrative employee
+ * Label (fr): Employé administratif
+ */
+role Administrative  specializes Employee
+/**
+ * Label (en): Professor
+ * Label (fr): Professeur
+ */
+role Professor  specializes Person.Professor
+/**
+ * Label (en): Regular administrative
+ * Label (fr): Administratif titulaire
+ */
+role Regular  specializes Administrative{
+    @material
+    [1] -- [1]  Intern
+}
+/**
+ * Label (en): Intern
+ * Label (fr): Stagiaire
+ */
+role Intern  specializes Administrative
+/**
+ * Label (en): Employee contract
+ * Label (fr): Contrat d'employé
+ */
+relator Employee_Contract {
+    @mediation
+    [1] -- [1] ( {const } ) Regular
+    @mediation
+    [1] -- [1] ( {const } ) Intern
+}
+/**
+ * Label (en): Professor contract
+ * Label (fr): Contrat de professeur
+ */
+relator Professor_Contract {
+    @mediation
+    [1] -- [1] ( {const } ) UNISAM
+    @mediation
+    [1] -- [1] ( {const } ) Professor
+}
+/**
+ * Label (en): Employee loan
+ * Label (fr): Prêt employé
+ */
+relator Employee_Loan {
+    @mediation
+    [1] -- [1] ( {const } ) Employee
+}
+/**
+ * Label (en): Renew employee
+ * Label (fr): Renouveler employé
+ */
+relator Renew_Employee {
+    @mediation
+    [1] -- [1] ( {const } ) Employee
+}
+/**
+ * Label (en): Make reservation for employee
+ * Label (fr): Faire une réservation pour un employé
+ */
+relator Make_Reservation_for_Employee {
+    @mediation
+    [1] -- [1] ( {const } ) Employee
+}
+/**
+ * Label (en): Renew copy for employee
+ * Label (fr): Renouveler la copie pour un employé
+ */
+role Renew_Copy_for_Employee specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Renew_Employee
+}
+/**
+ * Label (en): Reserve copy for employee
+ * Label (fr): Réserver la copie pour un employé
+ */
+role Reserve_Copy_for_Employee specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Make_Reservation_for_Employee
+}
+/**
+ * Label (en): Employee loan role
+ * Label (fr): Rôle de prêt employé
+ */
+role Employee_Loan_Role specializes Copy {
+    @mediation
+    [1] -- [1] ( {const } ) Employee_Loan
+}
+

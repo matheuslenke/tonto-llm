@@ -1,0 +1,36 @@
+package Datatypes
+
+/**
+ * Label (en): Phone number
+ * Label (fr): Numéro de téléphone
+ */
+datatype PhoneNumber {
+  countryCode: int [1]
+  bodyNumber: int [1]
+}
+
+datatype int specializes number
+
+/**
+ * Label (en): Eye color
+ * Label (fr): Couleur des yeux
+ */
+enum EyeColor {
+  Blue,
+  Green,
+  Brown,
+  Black
+}
+
+/**
+ * Label (en): Address
+ * Label (fr): Adresse
+ */
+datatype Address {
+  country: string
+  city: string
+  postalCode: string
+  street: string
+  number: string
+  complement: string
+}

@@ -1,0 +1,107 @@
+import Datatypes
+import Person
+
+package University
+
+category Organization
+/**
+ * Label (en): University
+ * Label (fr): Université
+ * Description (en): A higher education institution composed of departments.
+ * Description (fr): Établissement d'enseignement supérieur composé de départements.
+ */
+kind University specializes Organization {
+  label {
+    @en "University"
+    @pt-br "Universidade"
+    @fr "Université"
+  }
+  description {
+    @en "An institution of higher education and research, organized as an organization with departments and staff."
+    @pt-br "Uma instituição de ensino superior e pesquisa, organizada como uma organização com departamentos e pessoal."
+    @fr "Une institution d’enseignement supérieur et de recherche, organisée en tant qu’organisation avec des départements et du personnel."
+  }
+  address: Address
+  name: string
+
+  @componentOf
+  [1] <>-- has -- [1..*] Department
+}
+/**
+ * Label (en): Department
+ * Label (fr): Département
+ * Description (en): Administrative or academic division of a university.
+ * Description (fr): Division administrative ou académique d'une université.
+ */
+relation Department [1] <>-- [1] JuniorStaff
+
+kind Department {
+  label {
+    @en "Department"
+    @pt-br "Departamento"
+    @fr "Département"
+  }
+  description {
+    @en "An organizational unit within a university responsible for academic or administrative functions."
+    @pt-br "Uma unidade organizacional de uma universidade responsável por funções acadêmicas ou administrativas."
+    @fr "Une unité organisationnelle d’une université responsable de fonctions académiques ou administratives."
+  }
+  name: string
+}
+
+/**
+ * Label (en): Staff member
+ * Label (fr): Membre du personnel
+ * Description (en): A person employed by the university.
+ * Description (fr): Une personne employée par l'université.
+ */
+role Staff specializes Person.Person
+
+/**
+ * Label (en): Junior staff member
+ * Label (fr): Membre du personnel junior
+ * Description (en): A staff member with junior rank.
+ * Description (fr): Un membre du personnel de rang junior.
+ */
+role JuniorStaff specializes Staff
+
+/**
+ * Label (en): Senior staff member
+ * Label (fr): Membre du personnel senior
+ * Description (en): A staff member with senior rank.
+ * Description (fr): Un membre du personnel de rang senior.
+ */
+role SeniorStaff specializes Staff
+
+roleMixin Employer
+
+/**
+ * Label (en): University as employer
+ * Label (fr): Université en tant qu'employeur
+ * Description (en): A university in the role of employer.
+ * Description (fr): Une université dans le rôle d'employeur.
+ */
+role UniversityEmployer specializes Employer, University
+
+/**
+ * Label (en): Employment contract
+ * Label (fr): Contrat de travail
+ * Description (en): Relator mediating the employment between an employee and an employer.
+ * Description (fr): Relateur qui médie l'emploi entre un employé et un employeur.
+ */
+relator EmploymentContract {
+  label {
+    @en "Employment Contract"
+    @pt-br "Contrato de trabalho"
+    @fr "Contrat de travail"
+  }
+  description {
+    @en "A relator that mediates the employment relationship between an employer and an employee."
+    @pt-br "Um relator que media a relação de emprego entre um empregador e um empregado."
+    @fr "Un relateur qui médiatise la relation d’emploi entre un employeur et un employé."
+  }
+  @mediation
+  [1..*] -- [1] Employee
+  @mediation
+  [1..*] -- [1] Employer
+}

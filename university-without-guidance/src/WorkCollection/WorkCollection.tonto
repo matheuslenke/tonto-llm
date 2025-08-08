@@ -1,0 +1,46 @@
+package WorkCollection
+
+/**
+ * Label (en): Work
+ * Label (fr): Œuvre
+ * Description (en): Any intellectual or artistic work held by the library.
+ * Description (fr): Toute œuvre intellectuelle ou artistique détenue par la bibliothèque.
+ */
+kind Work 
+/**
+ * Label (en): Videotape
+ * Label (fr): Cassette vidéo
+ */
+subkind Videotape specializes Work {
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+/**
+ * Label (en): Periodical
+ * Label (fr): Périodique
+ */
+subkind Periodical specializes Work {
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+/**
+ * Label (en): Book
+ * Label (fr): Livre
+ */
+subkind Book  specializes Work{
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+/**
+ * Label (en): DVD
+ * Label (fr): DVD
+ */
+subkind Dvd  specializes Work{
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+/**
+ * Label (en): Collection
+ * Label (fr): Collection
+ */
+collective Collection 

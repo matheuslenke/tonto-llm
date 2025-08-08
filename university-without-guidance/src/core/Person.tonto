@@ -1,0 +1,40 @@
+package Person
+
+/**
+ * Label (en): Person
+ * Label (fr): Personne
+ * Description (en): A human individual.
+ * Description (fr): Un individu humain.
+ */
+kind Person
+
+phase Child specializes Person
+phase Teenager specializes Person
+phase Adult specializes Person
+
+/**
+ * Label (en): University student
+ * Label (fr): Étudiant universitaire
+ */
+role UniversityStudent specializes Person
+role FormerStudent specializes UniversityStudent
+role ActiveStudent specializes UniversityStudent
+
+/**
+ * Label (en): Employee
+ * Label (fr): Employé
+ */
+role Employee specializes Person
+/**
+ * Label (en): University professor
+ * Label (fr): Professeur d'université
+ */
+role UniversityProfessor specializes Employee
+
+/**
+ * Label (en): Professor
+ * Label (fr): Professeur
+ */
+role Professor specializes Employee
+
+relation Professor [*] -- NamedRelation -- [1..2] Person
