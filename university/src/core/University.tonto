@@ -3,8 +3,29 @@ import Person
 
 package University
 
-category Organization
+category Organization {
+  label {
+    @en "Organization"
+    @pt-br "Organização"
+    @fr "Organisation"
+  }
+  description {
+    @en "A social unit organized to pursue collective goals (e.g., a university, company, or department)."
+    @pt-br "Uma unidade social organizada para perseguir objetivos coletivos (p. ex., uma universidade, empresa ou departamento)."
+    @fr "Une entité sociale organisée pour poursuivre des objectifs collectifs (p. ex., une université, une entreprise ou un département)."
+  }
+}
 kind University specializes Organization {
+  label {
+    @en "University"
+    @pt-br "Universidade"
+    @fr "Université"
+  }
+  description {
+    @en "An institution of higher education and research, organized as an organization with departments and staff."
+    @pt-br "Uma instituição de ensino superior e pesquisa, organizada como uma organização com departamentos e pessoal."
+    @fr "Une institution d’enseignement supérieur et de recherche, organisée en tant qu’organisation avec des départements et du personnel."
+  }
   address: Address
   name: string
 
@@ -14,17 +35,106 @@ kind University specializes Organization {
 relation Department [1] <>-- [1] JuniorStaff
 
 kind Department {
+  label {
+    @en "Department"
+    @pt-br "Departamento"
+    @fr "Département"
+  }
+  description {
+    @en "An organizational unit within a university responsible for academic or administrative functions."
+    @pt-br "Uma unidade organizacional de uma universidade responsável por funções acadêmicas ou administrativas."
+    @fr "Une unité organisationnelle d’une université responsable de fonctions académiques ou administratives."
+  }
   name: string
 }
 
-collective Staff
-subkind JuniorStaff specializes Staff
-subkind SeniorStaff specializes Staff
+collective Staff {
+  label {
+    @en "Staff"
+    @pt-br "Pessoal"
+    @fr "Personnel"
+  }
+  description {
+    @en "The collective of employees associated with a university or its departments."
+    @pt-br "O coletivo de empregados associado a uma universidade ou a seus departamentos."
+    @fr "L’ensemble des employés associés à une université ou à ses départements."
+  }
+}
+role StaffMember specializes Employee {
+  label {
+    @en "Staff Member"
+    @pt-br "Membro do pessoal"
+    @fr "Membre du personnel"
+  }
+  description {
+    @en "An employee playing the staff role within the organizational context of a university or department."
+    @pt-br "Um empregado que desempenha o papel de pessoal no contexto organizacional de uma universidade ou departamento."
+    @fr "Un employé jouant le rôle de personnel dans le contexte organisationnel d’une université ou d’un département."
+  }
+}
+role JuniorStaff specializes StaffMember {
+  label {
+    @en "Junior Staff"
+    @pt-br "Pessoal júnior"
+    @fr "Personnel junior"
+  }
+  description {
+    @en "A staff member with a junior appointment or level."
+    @pt-br "Um membro do pessoal com nomeação ou nível júnior."
+    @fr "Un membre du personnel ayant un niveau ou une nomination junior."
+  }
+}
+role SeniorStaff specializes StaffMember {
+  label {
+    @en "Senior Staff"
+    @pt-br "Pessoal sênior"
+    @fr "Personnel senior"
+  }
+  description {
+    @en "A staff member with a senior appointment or level."
+    @pt-br "Um membro do pessoal com nomeação ou nível sênior."
+    @fr "Un membre du personnel ayant un niveau ou une nomination senior."
+  }
+}
 
-roleMixin Employer
-role UniversityEmployer specializes Employer, University
+@memberOf relation StaffMember [1] --<o> [1] Staff
+
+roleMixin Employer {
+  label {
+    @en "Employer"
+    @pt-br "Empregador"
+    @fr "Employeur"
+  }
+  description {
+    @en "A role mixin for entities that employ persons in an organizational context."
+    @pt-br "Um mixin de papel para entidades que empregam pessoas em um contexto organizacional."
+    @fr "Un rôle mixin pour des entités qui emploient des personnes dans un contexte organisationnel."
+  }
+}
+role UniversityEmployer specializes Employer, University {
+  label {
+    @en "University Employer"
+    @pt-br "Universidade empregadora"
+    @fr "Université employeur"
+  }
+  description {
+    @en "A university acting in the capacity of an employer."
+    @pt-br "Uma universidade atuando na capacidade de empregadora."
+    @fr "Une université agissant en tant qu’employeur."
+  }
+}
 
 relator EmploymentContract {
+  label {
+    @en "Employment Contract"
+    @pt-br "Contrato de trabalho"
+    @fr "Contrat de travail"
+  }
+  description {
+    @en "A relator that mediates the employment relationship between an employer and an employee."
+    @pt-br "Um relator que media a relação de emprego entre um empregador e um empregado."
+    @fr "Un relateur qui médiatise la relation d’emploi entre un employeur et un employé."
+  }
   @mediation
   [1..*] -- [1] Employee
   @mediation
