@@ -1,0 +1,20 @@
+package WorkCollection
+
+kind Work 
+subkind Videotape specializes Work {
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+subkind Periodical specializes Work {
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+subkind Book  specializes Work{
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+subkind Dvd  specializes Work{
+    @memberOf
+    [1]  --<o> [1]  Collection
+}
+collective Collection 

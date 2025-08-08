@@ -1,0 +1,11 @@
+{
+  "name": "university",
+  "version": "0.0.1",
+  "description": "An University Package",
+  "author": "Matheus Lenke Coutinho",
+  "license": "ISC",
+  "files": [
+    "src"
+  ],
+  "template": "blank"
+}
