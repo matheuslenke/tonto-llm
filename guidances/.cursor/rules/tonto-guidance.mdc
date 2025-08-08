@@ -64,12 +64,12 @@ These keywords determine the ontological meta-properties of the class.
     *   `kind`: For substantial individuals that are functional complexes (e.g., `kind Person`, `kind Car`).
     *   `collective`: For collections of similar members (e.g., `collective Flock`).
     *   `quantity`: For amounts of matter (e.g., `quantity WaterPortion`).
-    *   `quality`: For qualia, values in a conceptual space (e.g., `quality Color`, `quality Weight`).
-    *   `mode`: For intrinsic, non-describable properties (e.g., `mode Skill`, `mode Belief`). Often specialized into:
+    *   `quality`: Qualities are objectified aspects that inhere in an object and are given values in a quality space (e.g., `quality Color`, `quality Weight`).
+    *   `mode`: Modes can bear their own moments, including their own qualities, which can vary in independent ways. The category of modes include dispositions (e.g., functions, capabilities, capacities, vulnerabilities, etc.) as well as externally dependent entities (e.g., the love of John for Mary, the commitment of Paul towards Clara to meet for lunch next Friday). Often specialized into:
         *   `intrinsicMode`
         *   `extrinsicMode`
     *   `relator`: For truth-makers of material relations, connecting multiple individuals (e.g., `relator MarriageContract`, `relator Employment`).
-    *   `type` / `powertype`: For higher-order types (types whose instances are types). (e.g., `type Species`, `powertype CarModelRange`).
+    *   `type` / `powertype`: For higher-order types (types whose instances are types). (e.g., `type Species`, `powertype CarTypeRange`).
 
 *   **Sortals (specializations of Kinds, inherit identity):**
     *   `subkind`: Rigid specialization of a kind (e.g., `subkind Man specializes Person`).
@@ -88,10 +88,10 @@ These keywords determine the ontological meta-properties of the class.
     *   `class` (e.g., `class TemporaryConcept`).
 
 *   **Perdurants (Events/Situations):**
-    *   `event`: Represents happenings, occurrences (e.g., `event Purchase`).
+    *   `event`: A type of happenning/occurrence (e.g., `event Purchase`).
     *   `situation`: Represents a state of affairs at a point in time (e.g., `situation SystemOverload`).
     *   `process`: (If distinguished from event, represents ongoing perdurants).
-
+s
 **2.4.2. Ontological Natures:**
 Specifies the fundamental nature of instances for non-sortals or to further constrain sortals.
 Syntax: `of <nature1>, <nature2>, ...`
@@ -104,7 +104,7 @@ Example: `phase Adult specializes Person`
 
 **2.4.4. Instantiation (for Higher-Order Types):**
 Syntax: `(instanceOf <HigherOrderType>)`
-Example: `kind Dog (instanceOf SpeciesType)`
+Example: `kind Dog (instanceOf Species)`
 
 **2.4.5. Class Body (`{ ... }`):**
 Contains optional `label`, `description`, attributes, and internal relations.
@@ -267,13 +267,13 @@ The "Powertype Pattern" is a central concept in multi-level modeling. [cite_star
   * **Example**:
 
     ```tonto
-    // CarModel includes ALL specializations of Car (e.g., Sedan, SUV,
+    // CarType includes ALL specializations of Car (e.g., Sedan, SUV,
     // and even the generic Car type itself).
-    powertype CarModel of Car
+    powertype CarType of Car
 
     // Specific car models are instances of this higher-order type.
-    subkind Sedan (instanceOf CarModel) specializes Car 
-    subkind Suv (instanceOf CarModel) specializes Car
+    subkind Sedan (instanceOf CarType) specializes Car 
+    subkind Suv (instanceOf CarType) specializes Car
     ```
 
 ### 3.2. The `categorizes` Relation (Categorizer Type)
@@ -290,11 +290,11 @@ The "Powertype Pattern" is a central concept in multi-level modeling. [cite_star
 
     ```tonto
     // A general powertype (optional, but conceptually exists)
-    powertype CarModel of Car
+    powertype CarType of Car
 
     // A type that categorizes Car models based on their propulsion system.
-    [cite_start]// It is a specialization of the main powertype, CarModel. [cite: 2472, 2473]
-    type PropulsionType specializes CarModel
+    [cite_start]// It is a specialization of the main powertype, CarType. [cite: 2472, 2473]
+    type PropulsionType specializes CarType
 
     // The 'genset' is the primary way to use a categorizer.
     // It defines the specific subtypes and links them to their categorizer.
@@ -319,7 +319,7 @@ The `disjoint` and `complete` properties of a `genset` correspond to formal vari
 | **Definition** | [cite_start]Includes **all** possible specializations of a base type. [cite: 2364] | [cite_start]Includes a **specific subset** of specializations based on a criterion. [cite: 2443] |
 | **Base Type Included?** | **Yes**. [cite_start]The base type is considered an instance of its powertype. [cite: 2363] | **No**. [cite_start]The base type is not an instance of the categorizer. [cite: 2444] |
 | **Primary Use** | To define the universal set of subtypes. Often implicit, but can be explicit. | To define and constrain a specific, meaningful taxonomy (e.g., via a `genset`). |
-| **Tonto Syntax** | `powertype CarModel of Car` | `genset MyGenset { categorizer MyType ... }` |
+| **Tonto Syntax** | `powertype CarType of Car` | `genset MyGenset { categorizer MyType ... }` |
 
 By clearly distinguishing these patterns, the LLM can generate more precise and well-founded Tonto models that correctly reflect the intended multi-level structure.
 
