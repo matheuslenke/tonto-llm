@@ -1,13 +1,20 @@
 package Datatypes
 
 datatype PhoneNumber {
+  label { @en "Phone Number" }
+  description { @en "A structured representation of a telephone number with country code and national number." }
   countryCode: int [1]
   bodyNumber: int [1]
 }
 
-datatype int specializes number
+datatype int specializes number {
+  label { @en "Integer" }
+  description { @en "A whole number without a fractional component." }
+}
 
 enum EyeColor {
+  label { @en "Eye Color" }
+  description { @en "Enumeration of common human eye colors." }
   Blue,
   Green,
   Brown,
@@ -15,6 +22,8 @@ enum EyeColor {
 }
 
 datatype Address {
+  label { @en "Address" }
+  description { @en "A postal address including country, city, postal code, and street details." }
   country: string
   city: string
   postalCode: string

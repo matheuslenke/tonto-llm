@@ -1,18 +1,48 @@
 package Person
 
-kind Person
+kind Person {
+  label { @en "Person" }
+  description { @en "A human individual who can play roles such as student, employee, or professor." }
+}
 
-phase Child specializes Person
-phase Teenager specializes Person
-phase Adult specializes Person
+phase Child specializes Person {
+  label { @en "Child" }
+  description { @en "A person in the childhood phase." }
+}
+phase Teenager specializes Person {
+  label { @en "Teenager" }
+  description { @en "A person in the teenage phase." }
+}
+phase Adult specializes Person {
+  label { @en "Adult" }
+  description { @en "A person in the adult phase." }
+}
 
-role UniversityStudent specializes Person
-role FormerStudent specializes UniversityStudent
-role ActiveStudent specializes UniversityStudent
+role UniversityStudent specializes Person {
+  label { @en "University Student" }
+  description { @en "A person enrolled in a university program." }
+}
+role FormerStudent specializes UniversityStudent {
+  label { @en "Former Student" }
+  description { @en "A person who previously held the student role at a university." }
+}
+role ActiveStudent specializes UniversityStudent {
+  label { @en "Active Student" }
+  description { @en "A person who currently holds the student role at a university." }
+}
 
-role Employee specializes Person
-role UniversityProfessor specializes Employee
+role Employee specializes Person {
+  label { @en "Employee" }
+  description { @en "A person employed by an organization through an employment relation." }
+}
+role UniversityProfessor specializes Employee {
+  label { @en "University Professor" }
+  description { @en "An employee who holds a professor role at a university." }
+}
 
-role Professor specializes Employee
+role Professor specializes Employee {
+  label { @en "Professor" }
+  description { @en "A person employed in an academic position involving teaching and research." }
+}
 
-relation Professor [*] -- NamedRelation -- [1..2] Person
+relation Professor [*] -- supervises -- [1..2] Person

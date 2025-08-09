@@ -56,6 +56,7 @@ Classes are the core building blocks. They represent types of individuals or typ
   // attributes
   // internal relations
 }`
+the `label` and `description` attributes always come at the top of the class attributes in that order.
 
 **2.4.1. Stereotypes (Keywords for Classes):**
 These keywords determine the ontological meta-properties of the class.

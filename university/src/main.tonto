@@ -3,5 +3,7 @@ package main
 // 'kind' is a fundamental, rigid type.
 // 'HelloWorld' is a kind, representing a basic concept.
 kind HelloWorld {
+    label { @en "Hello World" }
+    description { @en "A minimal example kind with a message attribute for demonstration purposes." }
     message: string
 }
