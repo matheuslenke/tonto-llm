@@ -1,0 +1,18 @@
+package Person
+
+kind Person
+
+phase Child specializes Person
+phase Teenager specializes Person
+phase Adult specializes Person
+
+role UniversityStudent specializes Person
+role FormerStudent specializes UniversityStudent
+role ActiveStudent specializes UniversityStudent
+
+role Employee specializes Person
+role UniversityProfessor specializes Employee
+
+role Professor specializes Employee
+
+relation Professor [*] -- NamedRelation -- [1..2] Person

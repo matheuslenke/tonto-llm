@@ -7,9 +7,13 @@ This repository contains a small experiment used in the paper leveraging "LLM-Ba
 - **With guidance**: The agent adheres to UFO and Tonto best practices, correctly using concepts (e.g., `kind`, `role`, `phase`, `category`, `relator`, `mode`, `quality`) and can produce more complex structures (e.g., powertype pattern) with fewer semantic issues.
 
 ### Repository layout
-- `guidances/`: UFO-based guidance texts to steer the LLM. It contains the same files in the correct format for VScode (`.gitub/instructions`) and cursor (`.cursor/rules`)
-- `university/`: University ontology used for the guided condition.
-- `university-without-guidance/`: Same domain setup to reproduce the baseline condition.
+- `guidances/`: UFO-based guidance texts to steer the LLM. It contains the same files in the correct format for VS Code (`.github/instructions`) and Cursor (`.cursor/rules`).
+- `experiment-with-guidances/`:
+  - `university-before/`: input ontology for the guided condition.
+  - `university-after/`: generated ontology (agent output) with guidance.
+- `experiment-without-guidances/`:
+  - `university-before/`: input ontology for the baseline condition.
+  - `university-after/`: generated ontology (agent output) without guidance.
 
 ### Prerequisites
 - Cursor IDE: see `https://cursor.com`.
@@ -17,18 +21,32 @@ This repository contains a small experiment used in the paper leveraging "LLM-Ba
 - Access to any modern LLM available in Cursor. In our exploratory runs we observed good initial results with Claude 3.7 Sonnet, Gemini 2.5 Pro, and OpenAI o3; results may vary by model. We used cursor with the "Pro" plan.
 
 ### How to run the comparison:
+
+> Important detail: The guidance rules only work if they are at the root of your current open folder in Cursor/ VsCode. Make sure that this is the case, otherwise no rule will be applied.
+
 1) Guided condition
    - Open the workspace in Cursor.
-   - Pin or otherwise add the files in `guidances/` as persistent guidance/context for the assistant.
-   - Open the `university/` folder in the editor.
-   - Ask the agent to: "check terminology" and "fix semantic errors" for the university ontology.
+   - Pin or otherwise add the files in `guidances/` (or `.cursor/rules`) as persistent guidance/context for the assistant.
+   - Open `experiment-with-guidances/university-before/` in the editor.
+   - Ask the agent the following prompt:
+   ```
+        Your task is to help me check the terminology of my ontology and fix semantic errors.
+        Get the errors from @Linter Errors . Take a look at all packages.
+        Also, create labels and descriptions in English and French, please.
+   ```
    - Observe the agent’s edits and verify with the Tonto extension’s feedback.
+   - For reference, compare with `experiment-with-guidances/university-after/`.
 
 2) Baseline (no guidance)
    - Remove/unpin the guidance texts.
-   - Open the `university-without-guidance/` folder.
-   - Use the same prompts: "check terminology" and "fix semantic errors".
-   - Compare the results with the guided condition (grammar use, UFO concept adherence, structural correctness, label/description usage).
+   - Open `experiment-without-guidances/university-before/`.
+   - Use the same prompt:
+   ```
+    Your task is to help me check the terminology of my ontology and fix semantic errors.
+    Get the errors from @Linter Errors . Take a look at all packages.
+    Also, create labels and descriptions in English and French, please.
+   ```
+   - For reference, compare with `experiment-without-guidances/university-after/` and with the guided condition (grammar use, UFO concept adherence, structural correctness, label/description usage).
 
 ### Expected outcomes
 - Without guidance, expect more grammar violations, misplaced UFO types, and documentation as code comments rather than proper `label`/`description` attributes.

@@ -33,8 +33,6 @@ kind University specializes Organization {
  * Description (en): Administrative or academic division of a university.
  * Description (fr): Division administrative ou académique d'une université.
  */
-relation Department [1] <>-- [1] JuniorStaff
-
 kind Department {
   label {
     @en "Department"
@@ -58,20 +56,15 @@ kind Department {
 role Staff specializes Person.Person
 
 /**
- * Label (en): Junior staff member
- * Label (fr): Membre du personnel junior
- * Description (en): A staff member with junior rank.
- * Description (fr): Un membre du personnel de rang junior.
- */
-role JuniorStaff specializes Staff
-
-/**
  * Label (en): Senior staff member
  * Label (fr): Membre du personnel senior
  * Description (en): A staff member with senior rank.
  * Description (fr): Un membre du personnel de rang senior.
  */
-role SeniorStaff specializes Staff
+role SeniorStaff specializes Staff {
+  @subCollectionOf
+  [1] -- isSubCollectionOf -- [1] Staff
+}
 
 roleMixin Employer
 

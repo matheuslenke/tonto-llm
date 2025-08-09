@@ -1,0 +1,33 @@
+import Datatypes
+import Person
+
+package University
+
+category Organization
+kind University specializes Organization {
+  address: Address
+  name: string
+
+  @componentOf
+  [1] <>-- has -- [1..*] Department
+}
+
+kind Department {
+  name: string
+}
+
+collective Staff
+collective SeniorStaff {
+  @subCollectionOf
+  [1] -- isSubCollectionOf -- [1] Staff
+}
+
+roleMixin Employer
+role UniversityEmployer specializes Employer, University
+
+relator EmploymentContract {
+  @mediation
+  [1..*] -- [1] Employee
+  @mediation
+  [1..*] -- [1] Employer
+}

@@ -1,0 +1,9 @@
+{
+  "projectName": "workCollection",
+  "displayName": "Work Collection",
+  "authors": [],
+  "version": "1.0.0",
+  "outFolder": "out",
+  "license": "No License",
+  "dependencies": {}
+}
