@@ -4,11 +4,21 @@ import Person
 package University
 
 category Organization {
-  label { @en "Organization" }
+  label {
+    @en "Organization"
+    @pt-br "Organização"
+    @es "Organización"
+    @fr "Organisation"
+  }
   description { @en "An organized collective entity such as a university, department, or company." }
 }
 kind University specializes Organization {
-  label { @en "University" }
+  label {
+    @en "University"
+    @pt-br "Universidade"
+    @es "Universidad"
+    @fr "Université"
+  }
   description { @en "A higher education organization composed of departments and other organizational units." }
   address: Address
   name: string
@@ -18,33 +28,63 @@ kind University specializes Organization {
 }
 
 kind Department {
-  label { @en "Department" }
+  label {
+    @en "Department"
+    @pt-br "Departamento"
+    @es "Departamento"
+    @fr "Département"
+  }
   description { @en "An organizational unit within a university responsible for a specific academic area." }
   name: string
 }
 
 collective Staff {
-  label { @en "Staff" }
+  label {
+    @en "Staff"
+    @pt-br "Pessoal"
+    @es "Personal"
+    @fr "Personnel"
+  }
   description { @en "A collective of employees associated with an organization." }
 }
 collective SeniorStaff {
-  label { @en "Senior Staff" }
+  label {
+    @en "Senior Staff"
+    @pt-br "Pessoal Sênior"
+    @es "Personal Sénior"
+    @fr "Personnel senior"
+  }
   description { @en "A subcollection of Staff representing senior members of the organization." }
   @subCollectionOf
   [1] -- isSubCollectionOf -- [1] Staff
 }
 
 roleMixin Employer {
-  label { @en "Employer" }
+  label {
+    @en "Employer"
+    @pt-br "Empregador"
+    @es "Empleador"
+    @fr "Employeur"
+  }
   description { @en "A role mixin for entities that employ persons via an employment relation." }
 }
 role UniversityEmployer specializes Employer, University {
-  label { @en "University Employer" }
+  label {
+    @en "University Employer"
+    @pt-br "Empregador Universitário"
+    @es "Empleador Universitario"
+    @fr "Employeur universitaire"
+  }
   description { @en "A university playing the employer role when employing persons." }
 }
 
 relator EmploymentContract {
-  label { @en "Employment Contract" }
+  label {
+    @en "Employment Contract"
+    @pt-br "Contrato de Trabalho"
+    @es "Contrato de Trabajo"
+    @fr "Contrat de travail"
+  }
   description { @en "A relator mediating the employment relationship between an employer and an employee." }
   @mediation
   [1..*] -- [1] Employee

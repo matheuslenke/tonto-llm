@@ -1,19 +1,34 @@
 package Datatypes
 
 datatype PhoneNumber {
-  label { @en "Phone Number" }
+  label {
+    @en "Phone Number"
+    @pt-br "Número de Telefone"
+    @es "Número de Teléfono"
+    @fr "Numéro de téléphone"
+  }
   description { @en "A structured representation of a telephone number with country code and national number." }
   countryCode: int [1]
   bodyNumber: int [1]
 }
 
 datatype int specializes number {
-  label { @en "Integer" }
+  label {
+    @en "Integer"
+    @pt-br "Inteiro"
+    @es "Entero"
+    @fr "Entier"
+  }
   description { @en "A whole number without a fractional component." }
 }
 
 enum EyeColor {
-  label { @en "Eye Color" }
+  label {
+    @en "Eye Color"
+    @pt-br "Cor dos Olhos"
+    @es "Color de ojos"
+    @fr "Couleur des yeux"
+  }
   description { @en "Enumeration of common human eye colors." }
   Blue,
   Green,
@@ -22,7 +37,12 @@ enum EyeColor {
 }
 
 datatype Address {
-  label { @en "Address" }
+  label {
+    @en "Address"
+    @pt-br "Endereço"
+    @es "Dirección"
+    @fr "Adresse"
+  }
   description { @en "A postal address including country, city, postal code, and street details." }
   country: string
   city: string

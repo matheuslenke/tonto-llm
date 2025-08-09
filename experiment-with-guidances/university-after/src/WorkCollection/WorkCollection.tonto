@@ -1,34 +1,64 @@
 package WorkCollection
 
 kind Work {
-  label { @en "Work" }
+  label {
+    @en "Work"
+    @pt-br "Obra"
+    @es "Obra"
+    @fr "Œuvre"
+  }
   description { @en "An intellectual or artistic creation, such as a book, periodical, videotape, or DVD." }
 }
 subkind Videotape specializes Work {
-    label { @en "Videotape" }
+    label {
+      @en "Videotape"
+      @pt-br "Fita de Vídeo"
+      @es "Cinta de video"
+      @fr "Cassette vidéo"
+    }
     description { @en "A Work recorded on magnetic tape for video playback." }
     @memberOf
     [1]  -- [1]  Collection
 }
 subkind Periodical specializes Work {
-    label { @en "Periodical" }
+    label {
+      @en "Periodical"
+      @pt-br "Publicação Periódica"
+      @es "Publicación periódica"
+      @fr "Publication périodique"
+    }
     description { @en "A Work published at regular intervals, such as journals or magazines." }
     @memberOf
     [1]  -- [1]  Collection
 }
 subkind Book  specializes Work{
-    label { @en "Book" }
+    label {
+      @en "Book"
+      @pt-br "Livro"
+      @es "Libro"
+      @fr "Livre"
+    }
     description { @en "A written or printed Work consisting of pages bound together." }
     @memberOf
     [1]  -- [1]  Collection
 }
 subkind Dvd  specializes Work{
-    label { @en "DVD" }
+    label {
+      @en "DVD"
+      @pt-br "DVD"
+      @es "DVD"
+      @fr "DVD"
+    }
     description { @en "A digital video disc containing a recorded Work." }
     @memberOf
     [1]  -- [1]  Collection
 }
 collective Collection {
-  label { @en "Collection" }
+  label {
+    @en "Collection"
+    @pt-br "Coleção"
+    @es "Colección"
+    @fr "Collection"
+  }
   description { @en "A collective of Works grouped by a curation or organizational criterion." }
 } 
