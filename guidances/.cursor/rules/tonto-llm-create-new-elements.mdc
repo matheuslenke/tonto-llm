@@ -89,11 +89,25 @@ Extending an existing Tonto ontology involves adding new classes, attributes, re
             // ... other attributes of the relator ...
         }
         // Example: relator Employment {
-        //   @mediation [1] -- (employeeEnd) -- [1] Employee
-        //   @mediation [1] -- (employerEnd) -- [1] Organization
+        //   @mediation (employment) [1..*] -- [1] (employee) Employee
+        //   @mediation (employment) [0..*] -- [1] (employer) Organization
         //   startDate: date
         // }
         ```
+    * Note that `@mediation` is used exclusively inside `relator` type definitions.
+
+    ** Material Relations **
+    When the relationship is not reified, we use `@material`. For example:
+        ```tonto
+        kind NewRelatorName {
+            @material [<cardinality>] -- [<cardinality>] RelatedClass
+            // ... other attributes
+        }
+        // Example: kind Person {
+        //   @material (employee) [0..*] -- isEmployedBy -- [0..*] (employer) Organization
+        //   birthDate : date
+        // }
+
 
 5.  **Events/Situations:**
     ```tonto

@@ -178,7 +178,7 @@ Prefix with `@`. Examples: `@mediation`, `@componentOf`, `@memberOf`, `@subColle
 
 **2.7.3. Cardinalities and End Names:**
 Applied to both ends of the relation. End names are optional and enclosed in `()`.
-Example: `[1] (employer) -- employs -- [0..*] (employees) Employee`
+Example: `@material (employer) [1] -- employs -- [0..*] (employees) Employee`
 
 **2.7.4. Relation Meta-Attributes (at each end):**
 Enclosed in `({ ... } <endName>)`.
@@ -187,7 +187,6 @@ Example: `({ ordered, subsets previousContracts } formerContracts)`
 
 **2.7.5. Internal Relation Syntax (within a class body):**
 The class itself is the source of the relation.
-`(@<stereotype>)? (<firstEndMetaAttributes>)? [<firstEndCardinality>]? <connector> (<relationName>)? (--)? [<secondEndCardinality>]? (<secondEndMetaAttributes>)? <TargetClass> (specializes <OtherRelationName>)? (inverseOf <OtherRelationName>)?`
 
 Example (Person has an Address):
 ```tonto
